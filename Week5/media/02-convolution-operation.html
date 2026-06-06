@@ -1,0 +1,113 @@
+<style>
+    .gcell {
+        width: 44px;
+        height: 44px;
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: .8em;
+        font-weight: bold;
+        transition: all .3s;
+        border: 2px solid transparent;
+    }
+
+    .ic {
+        background: #1e3a5f;
+        color: #93c5fd;
+    }
+
+    .ic.hl {
+        background: #3b82f6;
+        border-color: #a78bfa;
+        color: white;
+        transform: scale(1.05);
+    }
+
+    .kc {
+        background: #451a03;
+        color: #fbbf24;
+        border: 1px solid #78350f;
+    }
+
+    .oc {
+        background: #064e3b;
+        color: #6ee7b7;
+        border: 1px solid #065f46;
+    }
+
+    .oc.filled {
+        background: #059669;
+        color: white;
+    }
+
+    @keyframes pop {
+        from {
+            transform: scale(.5)
+        }
+
+        to {
+            transform: scale(1)
+        }
+    }
+</style>
+<div style="font-family:Segoe UI,sans-serif;background:#0f172a;padding:30px;border-radius:16px;color:white;">
+    <h3 style="text-align:center;color:#a78bfa;margin-bottom:20px;">✨ Convolution Operation — تفاعلية</h3>
+    <div style="display:flex;justify-content:center;align-items:flex-start;gap:20px;flex-wrap:wrap;">
+        <div style="text-align:center;">
+            <p style="color:#94a3b8;margin-bottom:8px;">Input (6×6)</p>
+            <div id="ig" style="display:grid;grid-template-columns:repeat(6,44px);gap:2px;"></div>
+        </div>
+        <div style="text-align:center;">
+            <p style="color:#fbbf24;margin-bottom:8px;">Kernel (3×3)</p>
+            <div id="kg" style="display:grid;grid-template-columns:repeat(3,44px);gap:2px;"></div>
+            <div id="cd"
+                style="margin-top:10px;padding:10px;background:#1e293b;border-radius:8px;font-size:.8em;color:#a78bfa;min-height:50px;min-width:150px;">
+            </div>
+        </div>
+        <div style="text-align:center;">
+            <p style="color:#34d399;margin-bottom:8px;">Output (4×4)</p>
+            <div id="og" style="display:grid;grid-template-columns:repeat(4,44px);gap:2px;"></div>
+        </div>
+    </div>
+    <div style="text-align:center;margin-top:20px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;">
+        <button onclick="stepC()"
+            style="background:#6d28d9;color:white;border:none;padding:10px 22px;border-radius:8px;cursor:pointer;font-size:1em;">▶
+            خطوة | Step</button>
+        <button onclick="autoC()"
+            style="background:#059669;color:white;border:none;padding:10px 22px;border-radius:8px;cursor:pointer;font-size:1em;">⏩
+            تلقائي | Auto</button>
+        <button onclick="resetC()"
+            style="background:#374151;color:white;border:none;padding:10px 22px;border-radius:8px;cursor:pointer;font-size:1em;">↺
+            إعادة</button>
+    </div>
+</div>
+<script>
+    const inp = [[1, 2, 3, 0, 1, 2], [4, 5, 6, 1, 0, 3], [7, 8, 9, 2, 1, 4], [0, 1, 2, 3, 4, 5], [1, 2, 3, 4, 5, 6], [2, 3, 4, 5, 6, 7]];
+    const ker = [[1, 0, -1], [1, 0, -1], [1, 0, -1]];
+    let st = 0, at = null;
+    function build() {
+        const ig = document.getElementById("ig"), kg = document.getElementById("kg"), og = document.getElementById("og");
+        ig.innerHTML = kg.innerHTML = og.innerHTML = "";
+        inp.forEach((row, r) => row.forEach((v, c) => { const d = document.createElement("div"); d.className = "gcell ic"; d.id = `i-${r}-${c}`; d.textContent = v; ig.appendChild(d); }));
+        ker.forEach((row, r) => row.forEach((v, c) => { const d = document.createElement("div"); d.className = "gcell kc"; d.textContent = v; kg.appendChild(d); }));
+        for (let i = 0; i < 16; i++) { const d = document.createElement("div"); d.className = "gcell oc"; d.id = `o-${Math.floor(i / 4)}-${i % 4}`; d.textContent = "?"; og.appendChild(d); }
+    }
+    function stepC() {
+        if (st >= 16) return;
+        const r = Math.floor(st / 4), c = st % 4;
+        document.querySelectorAll(".ic").forEach(e => e.classList.remove("hl"));
+        let sum = 0, terms = [];
+        for (let kr = 0; kr < 3; kr++)for (let kc = 0; kc < 3; kc++) {
+            document.getElementById(`i-${r + kr}-${c + kc}`).classList.add("hl");
+            const p = inp[r + kr][c + kc] * ker[kr][kc]; sum += p;
+            if (p !== 0) terms.push(`${inp[r + kr][c + kc]}x${ker[kr][kc]}`);
+        }
+        document.getElementById("cd").innerHTML = `<span style="color:#fbbf24;">الحساب:</span><br>${terms.slice(0, 4).join(" + ")}...<br><span style="color:#34d399;">= ${sum}</span>`;
+        const oc = document.getElementById(`o-${r}-${c}`); oc.textContent = sum; oc.classList.add("filled"); oc.style.animation = "pop .3s ease";
+        st++;
+    }
+    function autoC() { if (at) { clearInterval(at); at = null; return; } at = setInterval(() => { if (st >= 16) { clearInterval(at); at = null; return; } stepC(); }, 600); }
+    function resetC() { if (at) { clearInterval(at); at = null; } st = 0; build(); document.getElementById("cd").innerHTML = ""; }
+    build();
+</script>
