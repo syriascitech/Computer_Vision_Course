@@ -217,3 +217,8 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 .idea
+
+# Instructor-only material (solutions + instructor guide) - keep out of this public repo.
+# Share with instructors directly (email/Drive/etc.), not via git.
+exercises/Week2/01_week3_review_solutions.ipynb
+exercises/Week2/INSTRUCTOR_GUIDE.md
