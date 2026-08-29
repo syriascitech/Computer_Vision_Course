@@ -1,0 +1,24 @@
+<style>
+.pxgrid{display:grid;grid-template-columns:repeat(8,42px);gap:2px;}
+.px{width:42px;height:42px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:bold;cursor:pointer;transition:transform .2s,box-shadow .2s;}
+.px:hover{transform:scale(1.15);box-shadow:0 0 12px rgba(167,139,250,.8);}
+.nm{width:42px;height:42px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:bold;border:1px solid #334155;}
+@keyframes fi{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}
+</style>
+<div style="font-family:Segoe UI,sans-serif;background:#0f172a;padding:30px;border-radius:16px;color:white;">
+  <h3 style="text-align:center;color:#a78bfa;margin-bottom:20px;">🖼️ Pixel Grid → Number Matrix</h3>
+  <div style="display:flex;justify-content:center;align-items:center;gap:30px;flex-wrap:wrap;">
+    <div><p style="text-align:center;color:#94a3b8;margin-bottom:8px;">الصورة الأصلية</p><div id="sg" class="pxgrid"></div></div>
+    <div style="font-size:2.5em;color:#a78bfa;">→</div>
+    <div><p style="text-align:center;color:#94a3b8;margin-bottom:8px;">المصفوفة الرقمية</p><div id="ng" class="pxgrid"></div></div>
+  </div>
+</div>
+<script>
+const sm=[[0,0,0,0,0,0,0,0],[0,0,200,0,0,200,0,0],[0,0,200,0,0,200,0,0],[0,0,0,0,0,0,0,0],[0,180,0,0,0,0,180,0],[0,0,180,0,0,180,0,0],[0,0,0,180,180,0,0,0],[0,0,0,0,0,0,0,0]];
+const sg=document.getElementById("sg"),ng=document.getElementById("ng");
+sm.forEach((row,r)=>row.forEach((v,c)=>{
+  const g=255-v;
+  const dc=document.createElement("div");dc.className="px";dc.style.background=`rgb(${g},${g},${g})`;dc.style.animation=`fi .4s ease ${(r*8+c)*.02}s both`;sg.appendChild(dc);
+  const dn=document.createElement("div");dn.className="nm";dn.style.background=v>0?`rgba(167,139,250,${.2+v/255*.6})`:"#1e293b";dn.style.color=v>0?"#e2e8f0":"#475569";dn.textContent=v;dn.style.animation=`fi .4s ease ${(r*8+c)*.02+.5}s both`;ng.appendChild(dn);
+}));
+</script>

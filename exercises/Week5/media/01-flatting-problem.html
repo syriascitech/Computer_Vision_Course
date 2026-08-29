@@ -1,0 +1,33 @@
+<style>
+.fc2{width:50px;height:50px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-weight:bold;font-size:.9em;color:white;}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-3px)}75%{transform:translateX(3px)}}
+</style>
+
+<div style="font-family:Segoe UI,sans-serif;background:#0f172a;padding:30px;border-radius:16px;color:white;" dir="rtl">
+  <h3 style="text-align:center;color:#f87171;margin-bottom:20px;">⚠️ مشكلة التسطيح | The Flattening Problem</h3>
+  <div style="display:flex;justify-content:center;align-items:flex-start;gap:25px;flex-wrap:wrap;">
+    <div style="text-align:center;">
+      <p style="color:#94a3b8;margin-bottom:10px;">مصفوفة ثنائية الأبعاد</p>
+      <div style="display:grid;grid-template-columns:repeat(4,50px);gap:3px;">
+        <div class="fc2" style="background:#6d28d9;">A</div><div class="fc2" style="background:#4c1d95;">B</div><div class="fc2" style="background:#4c1d95;">C</div><div class="fc2" style="background:#4c1d95;">D</div>
+        <div class="fc2" style="background:#ef4444;">E</div><div class="fc2" style="background:#4c1d95;">F</div><div class="fc2" style="background:#4c1d95;">G</div><div class="fc2" style="background:#4c1d95;">H</div>
+        <div class="fc2" style="background:#4c1d95;">I</div><div class="fc2" style="background:#4c1d95;">J</div><div class="fc2" style="background:#4c1d95;">K</div><div class="fc2" style="background:#4c1d95;">L</div>
+        <div class="fc2" style="background:#4c1d95;">M</div><div class="fc2" style="background:#4c1d95;">N</div><div class="fc2" style="background:#4c1d95;">O</div><div class="fc2" style="background:#4c1d95;">P</div>
+      </div>
+      <p style="color:#f87171;font-size:.85em;margin-top:8px;">🔴 A و E متجاوران رأسياً</p>
+    </div>
+    <div style="padding-top:50px;text-align:center;">
+      <div style="font-size:2em;color:#f87171;animation:shake 1s infinite;">←</div>
+      <span style="color:#f87171;font-size:.8em;">بعد التسطيح</span>
+    </div>
+    <div style="text-align:center;">
+      <p style="color:#94a3b8;margin-bottom:10px;">متجه أحادي الأبعاد</p>
+      <div style="display:flex;flex-wrap:wrap;gap:3px;">
+        <div class="fc2" style="background:#6d28d9;width:40px;">A</div><div class="fc2" style="background:#4c1d95;width:40px;">B</div><div class="fc2" style="background:#4c1d95;width:40px;">C</div><div class="fc2" style="background:#4c1d95;width:40px;">D</div>
+        <div class="fc2" style="background:#ef4444;width:40px;">E</div><div class="fc2" style="background:#4c1d95;width:40px;">F</div><div class="fc2" style="background:#4c1d95;width:40px;">G</div><div class="fc2" style="background:#4c1d95;width:40px;">H</div>
+        <div class="fc2" style="background:#4c1d95;width:40px;">...</div>
+      </div>
+      <p style="color:#f87171;font-size:.85em;margin-top:8px;">🔴 A و E بعيدان الآن! خسرنا المعلومات المكانية!</p>
+    </div>
+  </div>
+</div>
