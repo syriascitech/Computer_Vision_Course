@@ -68,9 +68,9 @@
 
 ---
 
-<img src="imgs/Amer-Sawan.jpg" alt="عمرو صوان" width="400">
+<img src="imgs/Amer-Sawan.jpg" alt="عامر صوان" width="400">
 
-### عمرو صوان
+### عامر صوان
 
 </div>
 
