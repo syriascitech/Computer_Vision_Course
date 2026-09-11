@@ -223,3 +223,4 @@ __marimo__/
 # NOTE: the Week 3 solutions notebook is intentionally published (shared with
 # students after the live session); only the instructor guide stays private.
 exercises/Week3/INSTRUCTOR_GUIDE.md
+.DS_Store
