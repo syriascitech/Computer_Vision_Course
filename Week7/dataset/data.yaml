@@ -1,0 +1,9 @@
+# قاعدة بيانات الأسبوع 7 - كشف مركبات الطوارئ
+# المصدر: Open Images V6/V7 (Google)
+path: .
+train: train/images
+val: valid/images
+test: test/images
+
+nc: 4
+names: ["ambulance", "car", "truck", "bus"]
