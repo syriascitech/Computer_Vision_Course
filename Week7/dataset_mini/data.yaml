@@ -1,0 +1,6 @@
+path: /Users/amersaw/Downloads/Week7 v2/dataset_mini
+train: train/images
+val: valid/images
+
+nc: 4
+names: ['ambulance', 'car', 'truck', 'bus']

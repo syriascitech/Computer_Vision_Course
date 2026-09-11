@@ -1,0 +1,9 @@
+# مكتبات الأسبوع 7 - تُثبَّت مرة واحدة قبل الحصة (انظر SETUP.md)
+ultralytics>=8.3
+torch>=2.0
+torchvision
+opencv-python
+pandas
+matplotlib
+pyyaml
+ipython
