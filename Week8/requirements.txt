@@ -1,0 +1,13 @@
+# مكتبات الأسبوع 8 - يثبّتها الدفتر نفسه في أول خلية عند التشغيل على Colab
+# (راجع HANDOFF.md #3 لتفاصيل نموذج التنفيذ). هذا الملف مرجع لمن يريد
+# تجهيز بيئة محلية مطابقة يدوياً.
+ultralytics>=8.3
+torch>=2.0
+torchvision
+opencv-python
+pandas
+matplotlib
+pyyaml
+numpy
+scipy
+imageio-ffmpeg
