@@ -224,3 +224,8 @@ __marimo__/
 # students after the live session); only the instructor guide stays private.
 exercises/Week3/INSTRUCTOR_GUIDE.md
 .DS_Store
+# مخرجات يولّدها الطالب أثناء تشغيل دفاتر الدورة
+Week*/runs/
+Week*/dataset_mini/
+Week*/demo_label.txt
+Week8/custom_bytetrack.yaml
